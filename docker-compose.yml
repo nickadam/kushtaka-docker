@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  kushtakad:
+    image: kushtaka/kushtakad:0.2.2
+    build: .
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+
+volumes:
+  data:
