@@ -1,14 +1,13 @@
 FROM golang:1 AS build
 
-WORKDIR /root
-
-RUN git clone https://github.com/kushtaka/kushtakad && \
-  cd kushtakad && \
-  ./build.sh
+RUN wget -q https://github.com/kushtaka/kushtakad/releases/download/v0.2.14/kushtakad_0.2.14_linux_amd64.gz && \
+  gunzip kushtakad_0.2.14_linux_amd64.gz && \
+  mv kushtakad_0.2.14_linux_amd64 /kushtakad && \
+  chmod +x /kushtakad
 
 FROM debian:buster
 
-COPY --from=build /root/kushtakad/kushtakad /usr/local/bin
+COPY --from=build /kushtakad /usr/local/bin
 
 EXPOSE 8080
 

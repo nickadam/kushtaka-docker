@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   kushtakad:
-    image: kushtaka/kushtakad:0.2.2
+    image: kushtaka/kushtakad:0.2.14
     build: .
     ports:
       - target: 8080
