@@ -9,8 +9,28 @@ services:
         protocol: tcp
     volumes:
       - type: volume
-        source: data
+        source: server-data
         target: /data
-
+  #sensor-setup:
+  #  image: kushtaka/kushtakad:0.2.14
+  #  command: bash -c 'kushtakad -apikey API_KEY_HERE -host http://EXTERNAL_ADDRESS_HERE:8080 && sleep infinity'
+  #  volumes:
+  #    - type: volume
+  #      source: sensor-data
+  #      target: /data
+  #sensor:
+  #  image: kushtaka/kushtakad:0.2.14
+  #  command: kushtakad -sensor
+  #  user: root
+  #  ports:
+  #    - target: 23
+  #      published: 23
+  #      protocol: tcp
+  #      mode: host
+  #  volumes:
+  #    - type: volume
+  #      source: sensor-data
+  #      target: /data
 volumes:
-  data:
+  server-data:
+  sensor-data:
